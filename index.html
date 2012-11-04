@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+	<head>
+        <meta charset="utf-8">
+        <title>tateSlider</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+		<meta name="robots" content="nofollow, noindex">
+		<link rel="stylesheet" href="css/reset.css" media="screen">
+		<style>
+			#nav li{
+				display: inline;
+			}
+			.active a{
+				color: red;
+			}
+			#slider{
+				height: 481px;
+				overflow: hidden;
+			}
+			#tate{
+				width: 321px;
+				list-style: none;
+				position: relative;
+			}
+		</style>
+    </head>
+    <body>
+		<div id="slider">
+		<ul id="tate">
+			<li><a href="#"><img src="img/a0003_001535.jpg"></a></li>
+			<li><a href="#"><img src="img/a0003_001547.jpg"></a></li>
+			<li><a href="#"><img src="img/a0003_001558.jpg"></a></li>
+		</ul>
+		</div>
+		<ul id="nav">
+			<li><a href="#">●</a></li>
+			<li><a href="#">●</a></li>
+			<li><a href="#">●</a></li>
+		</ul>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="js/tateSlider.js"></script>
+        <script src="js/jquery.mousewheel.js"></script>
+        <script>
+        	$(function(){
+        		$("#slider").tateSlider({
+        			interval : 3000,
+        			duration : 1000,
+        			itemHeight: 481
+        		});
+        	});
+        </script>
+ 
+    </body>
+</html>
