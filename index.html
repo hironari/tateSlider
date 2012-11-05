@@ -7,24 +7,43 @@
 		<meta name="robots" content="nofollow, noindex">
 		<link rel="stylesheet" href="css/reset.css" media="screen">
 		<style>
-			#nav li{
-				display: inline;
+			#container{
+				width: 480px;
+				margin: 0 auto;
+				margin-top: 120px;
 			}
+			#nav{
+				float: left;
+				padding-left: 20px;
+				margin-top: 180px;
+				outline: none;
+			}
+			#nav li{
+				margin-top: 1em;
+				font-size: 80%;
+			}
+			a{ text-decoration: none; color: #444444; }
 			.active a{
 				color: red;
 			}
 			#slider{
-				height: 481px;
+				height: 501px;
 				overflow: hidden;
+				float: left;
+				padding-bottom: 20px;
 			}
 			#tate{
 				width: 321px;
 				list-style: none;
 				position: relative;
 			}
+			#tate li{
+				margin: 10px 0;
+			}
 		</style>
     </head>
     <body>
+     <div id="container">	
 		<div id="slider">
 		<ul id="tate">
 			<li><a href="#"><img src="img/a0003_001535.jpg"></a></li>
@@ -37,16 +56,18 @@
 			<li><a href="#">●</a></li>
 			<li><a href="#">●</a></li>
 		</ul>
-
+	</div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="js/jquery.tateSlider.js"></script>
         <script src="js/jquery.mousewheel.js"></script>
         <script>
         	$(function(){
         		$("#slider").tateSlider({
-        			interval : 3000,
-        			duration : 1000,
-        			itemHeight: 481
+        			itemHeight: 481,
+        			autoPlay: true,
+        			hoverPause: true,
+        			interval: 3000,
+        			duration: 800
         		});
         	});
         </script>

@@ -16,9 +16,11 @@
 	$.fn.extend({
 		tateSlider : function(options){
 			var defaults = {
+				autoPlay : true,
 				interval : 2000,
 				duration : 800,
 				itemHeight : 481,
+				hoverPause : true,
 				mouseWheel : false
 			};
 			
@@ -30,10 +32,13 @@
 				var interval = o.interval;
 				var duration = o.duration;
 				var mouseWheel = o.mouseWheel;
+				var autoPlay = o.autoPlay;
+				var hoverPause = o.hoverPause;
 				var itemHeight = o.itemHeight;
 				var listlength = $("#nav > li").size();
 				var lists = $("#nav > li").find("a");
 				var index = 0;
+				var cycle;
 				lists.eq(index).closest("li").addClass("active");
 		
 				selectNav = function(idx){
@@ -52,15 +57,38 @@
 					index = idx;
 				}
 				
-				startCycle = function(){
-					var cycle = setInterval(function(){
-						var idx = index < listlength-1 ? index+1 : 0;
-						slideImg(idx);
-						selectNav(idx);
-					}, interval);
+				if(autoPlay){
+					startCycle = function(){
+						cycle = setInterval(function(){
+							var idx = index < listlength-1 ? index+1 : 0;
+							slideImg(idx);
+							selectNav(idx);
+						}, interval);
 					
+					};
+					startCycle();
+				};				
+				
+				restartCycle = function(){
+					if(autoPlay){
+						clearInterval(cycle);
+						startCycle();
+					}
 				};
-				startCycle();				
+				
+				if(hoverPause){
+					$(this).hover(function(){
+						clearInterval(cycle);
+					}, function(){
+						restartCycle();
+					});
+					
+					lists.hover(function(){
+						clearInterval(cycle);
+					}, function(){
+						restartCycle();
+					});
+				}				
 				
 				lists.bind("click", function(e){
 					e.preventDefault();
